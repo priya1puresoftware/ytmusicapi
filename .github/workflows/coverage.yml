@@ -24,7 +24,7 @@ jobs:
         cd tests
         curl -o test.mp3 https://www.kozco.com/tech/piano2-CoolEdit.mp3
         cp test.cfg.example test.cfg
-        coverage run --source=../ytmusicapi -m unittest test.py
+        coverage run -m unittest test.py
         coverage xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
