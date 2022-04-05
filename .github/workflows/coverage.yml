@@ -20,10 +20,12 @@ jobs:
         TEST_CFG: ${{ secrets.TEST_CFG }}
       run: |
         pip install -e .
+        python setup.py youtube
         pip install coverage
         cd tests
         curl -o test.mp3 https://www.kozco.com/tech/piano2-CoolEdit.mp3
         cp test.cfg.example test.cfg
+        
         coverage run -m unittest test.py
         coverage xml
     - name: Upload coverage to Codecov
