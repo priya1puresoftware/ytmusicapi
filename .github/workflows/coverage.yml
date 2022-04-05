@@ -23,7 +23,7 @@ jobs:
         pip install coverage
         cd tests
         curl -o test.mp3 https://www.kozco.com/tech/piano2-CoolEdit.mp3
-        cat <<< "$TEST_CFG" > test.cfg
+        cp tests/test.cfg.example tests/test.cfg
         coverage run --source=../ytmusicapi -m unittest test.py
         coverage xml
     - name: Upload coverage to Codecov
