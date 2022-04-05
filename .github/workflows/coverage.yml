@@ -19,12 +19,11 @@ jobs:
         HEADERS_AUTH: ${{ secrets.HEADERS_AUTH }}
         TEST_CFG: ${{ secrets.TEST_CFG }}
       run: |
-        pip install -e .
-        python setup.py youtube
-        pip install coverage
+        pip install -e .[dev]
+        pip install coverage pytest
         cd tests
-        curl -o test.mp3 https://www.kozco.com/tech/piano2-CoolEdit.mp3
         cp test.cfg.example test.cfg
+        pytest -v test.py
         
         coverage run -m unittest test.py
         coverage xml
